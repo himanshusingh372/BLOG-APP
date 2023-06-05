@@ -5,7 +5,7 @@ FROM adoptopenjdk:16-jdk-hotspot
 WORKDIR /app
 
 # Copy the JAR file into the container at /app
-COPY target/blog-app1.jar /app/blog-app1.jar
+COPY target1/blog-app1.jar /app/blog-app1.jar
 
 # Expose the port your application listens on
 EXPOSE 8080
