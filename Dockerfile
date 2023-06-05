@@ -1,14 +1,14 @@
-# Use a base image with Java installed
-FROM adoptopenjdk
+# Use an OpenJDK base image with version 16 (or the version matching your Java version)
+FROM adoptopenjdk:16-jdk-hotspot
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the JAR file into the container
-COPY target/blog-app.jar app.jar
+# Copy the JAR file into the container at /app
+COPY target/blog-app1.jar /app/blog-app1.jar
 
-# Expose the port on which the Spring Boot application listens
+# Expose the port your application listens on
 EXPOSE 8080
 
-# Set the entry point command to run the Spring Boot application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Set the command to run your application when the container starts
+CMD ["java", "-jar", "blog-app1.jar"]
