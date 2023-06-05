@@ -14,7 +14,7 @@
 	<name>BLOG-APP</name>
 	<description>This is a backend project for blogging</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	
 
