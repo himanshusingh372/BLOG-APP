@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.blog.BlogAppApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 58.938 s - in com.example.blog.BlogAppApplicationTests

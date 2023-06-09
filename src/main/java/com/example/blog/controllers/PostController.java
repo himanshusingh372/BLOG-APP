@@ -68,10 +68,10 @@ public class PostController {
 	@GetMapping("/user/{userid}/posts")
 	public ResponseEntity<PageResponse> getPostsByUser(
 			@PathVariable Integer userid,
-			@RequestParam(value="pageNumber",defaultValue="0",required=false) Integer pageNumber,
-			@RequestParam(value="pageSize",defaultValue="3",required=false) Integer pageSize,
-			@RequestParam(value="sortby",defaultValue="postId",required=false) String sortby,
-			@RequestParam(value="dir",defaultValue="asc",required=false) String dir) 
+			@RequestParam(value="pageNumber",defaultValue=AppConstants.PAGE_NUMBER,required=false) Integer pageNumber,
+			@RequestParam(value="pageSize",defaultValue=AppConstants.PAGE_SIZE,required=false) Integer pageSize,
+			@RequestParam(value="sortby",defaultValue=AppConstants.SORT_BY,required=false) String sortby,
+			@RequestParam(value="dir",defaultValue=AppConstants.SORT_DIR,required=false) String dir) 
 	{
 		PageResponse pageResponse = this.postservice.getPostByUser(userid,pageNumber,pageSize,sortby,dir);
 		return new ResponseEntity<PageResponse>(pageResponse, HttpStatus.OK);
@@ -82,10 +82,10 @@ public class PostController {
 	@GetMapping("/category/{categoryid}/posts")
 	public ResponseEntity<PageResponse> getPostsByCategory(
 			@PathVariable Integer categoryid,
-			@RequestParam(value="pageNumber",defaultValue="0",required=false) Integer pageNumber,
-			@RequestParam(value="pageSize",defaultValue="3",required=false) Integer pageSize,
-			@RequestParam(value="sortby",defaultValue="postId",required=false)String sortby,
-			@RequestParam(value="dir",defaultValue="asc",required=false) String dir) 
+			@RequestParam(value="pageNumber",defaultValue=AppConstants.PAGE_NUMBER,required=false) Integer pageNumber,
+			@RequestParam(value="pageSize",defaultValue=AppConstants.PAGE_SIZE,required=false) Integer pageSize,
+			@RequestParam(value="sortby",defaultValue=AppConstants.SORT_BY,required=false) String sortby,
+			@RequestParam(value="dir",defaultValue=AppConstants.SORT_DIR,required=false) String dir) 
 			
 	{
 		PageResponse pageResponse = this.postservice.getPostByCategory(categoryid,pageNumber,pageSize,sortby,dir);

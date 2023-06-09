@@ -96,7 +96,8 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public PageResponse getAllPost(Integer pagenumber, Integer pagesize, String sortby, String dir) {
-		Sort sort=(dir.equalsIgnoreCase("asc"))?Sort.by(sortby).ascending():Sort.by(sortby).descending();
+//		Sort sort=(dir.equalsIgnoreCase("asc"))?Sort.by(sortby).ascending():Sort.by(sortby).descending();
+		Sort sort=Sort.by("addedDate").descending();
 		Pageable p=PageRequest.of(pagenumber, pagesize, sort);
 		Page<Post> pagepost = this.postRepo.findAll(p);
 		List<Post> allpost =pagepost.getContent();
@@ -123,7 +124,8 @@ public class PostServiceImpl implements PostService {
 				.orElseThrow(() -> 
 				new ResourceNotFoundException("Category", "CategoryId", categoryId));
 		
-		Sort sort=(dir.equalsIgnoreCase("asc"))?Sort.by(sortby).ascending():Sort.by(sortby).descending();
+		//Sort sort=(dir.equalsIgnoreCase("asc"))?Sort.by(sortby).ascending():Sort.by(sortby).descending();
+		Sort sort=Sort.by("addedDate").descending();
 		Pageable p=PageRequest.of(pagenumber, pagesize,sort);
 		Page<Post> pagepost = this.postRepo.findByCategory(cat,p);
 		List<Post> allpost =pagepost.getContent();
@@ -146,7 +148,8 @@ public class PostServiceImpl implements PostService {
 		User user = this.userRepo.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User", "UserId", userId));
 		
-		Sort sort=(dir.equalsIgnoreCase("asc"))?Sort.by(sortby).ascending():Sort.by(sortby).descending();
+		//Sort sort=(dir.equalsIgnoreCase("asc"))?Sort.by(sortby).ascending():Sort.by(sortby).descending();
+		Sort sort=Sort.by("addedDate").descending();
 		Pageable p=PageRequest.of(pagenumber, pagesize, sort);
 		Page<Post> pagepost=this.postRepo.findByUser(user, p);
 		List<Post> allpost=pagepost.getContent();
@@ -169,7 +172,7 @@ public class PostServiceImpl implements PostService {
 
 //		Sort sort=(dir.equalsIgnoreCase("asc"))?Sort.by(sortby).ascending():Sort.by(sortby).descending();
 //		Pageable p=PageRequest.of(pageNumber, pageSize, sort);
-		
+		//Sort sort=Sort.by("addedDate").descending();
 		List<Post> allpost=this.postRepo.findByTitleContaining(Keyword);
 		//List<Post> allpost=pagepost.getContent();
 		List<PostDto> postdtos = allpost.stream().map((item)-> this.modelmapper.map(item, PostDto.class)).collect(Collectors.toList());
